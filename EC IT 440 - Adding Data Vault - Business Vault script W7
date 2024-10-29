@@ -1,0 +1,349 @@
+USE [EC_IT_440_DV]
+GO
+
+IF EXISTS (SELECT * FROM sys.objects Where object_id = OBJECT_ID (N'[bv].[bak_products]'))
+DROP TABLE [bv].[bak_products] 
+GO
+IF EXISTS (SELECT * FROM sys.objects Where object_id = OBJECT_ID (N'[bv].[h_bak_employees1]'))
+DROP TABLE [bv].[h_bak_employees1] 
+GO
+IF EXISTS (SELECT * FROM sys.objects Where object_id = OBJECT_ID (N'[bv].[h_dbv_customer_recipts]'))
+DROP TABLE [bv].[h_dbv_customer_recipts] 
+GO
+IF EXISTS (SELECT * FROM sys.objects Where object_id = OBJECT_ID (N'[bv].[h_dbv_employees]'))
+DROP TABLE [bv].[h_dbv_employees]
+GO
+IF EXISTS (SELECT * FROM sys.objects Where object_id = OBJECT_ID (N'[bv].[h_fam_farmers]'))
+DROP TABLE [bv].[h_fam_farmers]
+GO
+
+IF EXISTS (SELECT * FROM sys.objects Where object_id = OBJECT_ID (N'[bv].[h_fam_products]'))
+DROP TABLE [bv].[h_fam_products]
+GO
+
+IF EXISTS (SELECT * FROM sys.objects Where object_id = OBJECT_ID (N'[bv].[l_bak_batch]'))
+DROP TABLE [bv].[l_bak_batch]
+GO
+
+IF EXISTS (SELECT * FROM sys.objects Where object_id = OBJECT_ID (N'[bv].[l_dbv_transactions]'))
+DROP TABLE [bv].[l_dbv_transactions]
+GO
+IF EXISTS (SELECT * FROM sys.objects Where object_id = OBJECT_ID (N'[bv].[l_fam_recipts]'))
+DROP TABLE [bv].[l_fam_recipts]
+GO
+IF EXISTS (SELECT * FROM sys.objects Where object_id = OBJECT_ID (N'[bv].[s_bak_complaints]'))
+DROP TABLE [bv].[s_bak_complaints]
+GO
+IF EXISTS (SELECT * FROM sys.objects Where object_id = OBJECT_ID (N'[bv].[s_bak_qulity_assurance]'))
+DROP TABLE [bv].[s_bak_qulity_assurance]
+GO
+IF EXISTS (SELECT * FROM sys.objects Where object_id = OBJECT_ID (N'[bv].[s_dbv_drop_offs]'))
+DROP TABLE [bv].[s_dbv_drop_offs]
+GO
+IF EXISTS (SELECT * FROM sys.objects Where object_id = OBJECT_ID (N'[bv].[s_dbv_satisfation]'))
+DROP TABLE [bv].[s_dbv_satisfation]
+GO
+IF EXISTS (SELECT * FROM sys.objects Where object_id = OBJECT_ID (N'[bv].[s_fam_advertisement]'))
+DROP TABLE [bv].[s_fam_advertisement]
+GO
+IF EXISTS (SELECT * FROM sys.objects Where object_id = OBJECT_ID (N'[bv].[s_fam_qulity_assurance]'))
+DROP TABLE [bv].[s_fam_qulity_assurance]
+GO
+
+/****** Object:  Table [bv].[bak_products]    Script Date: 10/29/2024 11:36:55 AM ******/
+SET ANSI_NULLS ON
+
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [bv].[bak_products](
+	[bak_id] [int] NOT NULL,
+	[type_of_goods] [nchar](10) NULL,
+ CONSTRAINT [PK_bak_products] PRIMARY KEY CLUSTERED 
+(
+	[bak_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [bv].[h_bak_employees1]    Script Date: 10/29/2024 11:36:55 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [bv].[h_bak_employees1](
+	[emp_id] [int] NOT NULL,
+	[bak_name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_h_bak_employees1] PRIMARY KEY CLUSTERED 
+(
+	[emp_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [bv].[h_dbv_customer_recipts]    Script Date: 10/29/2024 11:36:55 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [bv].[h_dbv_customer_recipts](
+	[dbv_recpt_name] [nvarchar](50) NOT NULL,
+	[dbv_recipiants_satisfaction] [int] NOT NULL,
+	[dbv_date] [smalldatetime] NOT NULL,
+	[dbv_id] [int] NOT NULL,
+	[dbv_recpt_for] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_h_dbv_customer_recipts] PRIMARY KEY CLUSTERED 
+(
+	[dbv_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [bv].[h_dbv_employees]    Script Date: 10/29/2024 11:36:55 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [bv].[h_dbv_employees](
+	[dbv_id] [int] NOT NULL,
+	[dbv_name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_h_dbv_employees] PRIMARY KEY CLUSTERED 
+(
+	[dbv_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [bv].[h_fam_farmers]    Script Date: 10/29/2024 11:36:55 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [bv].[h_fam_farmers](
+	[fam_id] [int] NOT NULL,
+	[fam_name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_h_fam_farmers] PRIMARY KEY CLUSTERED 
+(
+	[fam_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [bv].[h_fam_products]    Script Date: 10/29/2024 11:36:55 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [bv].[h_fam_products](
+	[fam_product_id] [int] NOT NULL,
+	[fam_sold_date] [date] NULL,
+	[fam_produce] [nvarchar](50) NULL,
+ CONSTRAINT [PK_h_fam_products] PRIMARY KEY CLUSTERED 
+(
+	[fam_product_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [bv].[l_bak_batch]    Script Date: 10/29/2024 11:36:55 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [bv].[l_bak_batch](
+	[bak_batch_id] [int] NOT NULL,
+	[bak_id] [int] NOT NULL,
+	[emp_id] [nchar](10) NOT NULL,
+ CONSTRAINT [PK_l_bak_batch] PRIMARY KEY CLUSTERED 
+(
+	[bak_batch_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [bv].[l_dbv_transactions]    Script Date: 10/29/2024 11:36:55 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [bv].[l_dbv_transactions](
+	[dbv_cust_id] [int] NULL,
+	[dbv_id] [int] NULL,
+	[instance_id] [int] NOT NULL,
+ CONSTRAINT [PK_l_dbv_transactions] PRIMARY KEY CLUSTERED 
+(
+	[instance_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [bv].[l_fam_recipts]    Script Date: 10/29/2024 11:36:55 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [bv].[l_fam_recipts](
+	[customer_id] [int] NOT NULL,
+	[fam_id] [int] NOT NULL,
+	[fam_product_] [int] NULL,
+ CONSTRAINT [PK_l_fam_recipts] PRIMARY KEY CLUSTERED 
+(
+	[customer_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [bv].[s_bak_complaints]    Script Date: 10/29/2024 11:36:55 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [bv].[s_bak_complaints](
+	[bak_c_id] [int] NOT NULL,
+	[transation_id] [int] NULL,
+	[bak_complaints] [nvarchar](max) NULL,
+ CONSTRAINT [PK_s_bak_complaints] PRIMARY KEY CLUSTERED 
+(
+	[bak_c_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [bv].[s_bak_qulity_assurance]    Script Date: 10/29/2024 11:36:55 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [bv].[s_bak_qulity_assurance](
+	[bak_id] [int] NULL,
+	[transaction_id] [int] NOT NULL,
+	[bak_likelyhood of catering] [int] NOT NULL,
+ CONSTRAINT [PK_s_bak_qulity_assurance] PRIMARY KEY CLUSTERED 
+(
+	[transaction_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [bv].[s_dbv_drop_offs]    Script Date: 10/29/2024 11:36:55 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [bv].[s_dbv_drop_offs](
+	[dbv_car_id] [int] NOT NULL,
+	[dbv_items] [nvarchar](50) NULL,
+	[dbv_rcpts_date] [smalldatetime] NULL,
+ CONSTRAINT [PK_s_dbv_drop_offs] PRIMARY KEY CLUSTERED 
+(
+	[dbv_car_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [bv].[s_dbv_satisfation]    Script Date: 10/29/2024 11:36:55 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [bv].[s_dbv_satisfation](
+	[dbv_cust_id] [int] NULL,
+	[dbv_transaction_id] [int] NOT NULL,
+	[dbv_satisfation] [int] NULL,
+	[dbv_likelyhood_of_use] [int] NULL,
+ CONSTRAINT [PK_s_dbv_satisfation] PRIMARY KEY CLUSTERED 
+(
+	[dbv_transaction_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [bv].[s_fam_advertisement]    Script Date: 10/29/2024 11:36:55 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [bv].[s_fam_advertisement](
+	[cust_id] [int] NOT NULL,
+	[cust_heard_about] [nvarchar](50) NULL,
+	[fam_date] [date] NULL,
+ CONSTRAINT [PK_s_fam_advertisement] PRIMARY KEY CLUSTERED 
+(
+	[cust_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [bv].[s_fam_qulity_assurance]    Script Date: 10/29/2024 11:36:55 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [bv].[s_fam_qulity_assurance](
+	[fam_cust_id] [int] NOT NULL,
+	[fam_cust_happiness] [nchar](10) NULL,
+	[fam_id] [int] NULL,
+ CONSTRAINT [PK_fam_qulity_assurance] PRIMARY KEY CLUSTERED 
+(
+	[fam_cust_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_l_bak_batch]    Script Date: 10/29/2024 11:36:55 AM ******/
+CREATE NONCLUSTERED INDEX [IX_l_bak_batch] ON [bv].[l_bak_batch]
+(
+	[bak_batch_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_s_dbv_drop_offs]    Script Date: 10/29/2024 11:36:55 AM ******/
+CREATE NONCLUSTERED INDEX [IX_s_dbv_drop_offs] ON [bv].[s_dbv_drop_offs]
+(
+	[dbv_car_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+ALTER TABLE [bv].[l_bak_batch]  WITH CHECK ADD  CONSTRAINT [FK_l_bak_batch_l_bak_batch] FOREIGN KEY([bak_batch_id])
+REFERENCES [bv].[l_bak_batch] ([bak_batch_id])
+GO
+ALTER TABLE [bv].[l_bak_batch] CHECK CONSTRAINT [FK_l_bak_batch_l_bak_batch]
+GO
+ALTER TABLE [bv].[l_bak_batch]  WITH CHECK ADD  CONSTRAINT [FK_l_bak_batch_l_bak_batch1] FOREIGN KEY([bak_batch_id])
+REFERENCES [bv].[l_bak_batch] ([bak_batch_id])
+GO
+ALTER TABLE [bv].[l_bak_batch] CHECK CONSTRAINT [FK_l_bak_batch_l_bak_batch1]
+GO
+ALTER TABLE [bv].[l_dbv_transactions]  WITH CHECK ADD  CONSTRAINT [FK_l_dbv_transactions_l_dbv_transactions] FOREIGN KEY([instance_id])
+REFERENCES [bv].[l_dbv_transactions] ([instance_id])
+GO
+ALTER TABLE [bv].[l_dbv_transactions] CHECK CONSTRAINT [FK_l_dbv_transactions_l_dbv_transactions]
+GO
+ALTER TABLE [bv].[l_dbv_transactions]  WITH CHECK ADD  CONSTRAINT [FK_l_dbv_transactions_l_dbv_transactions1] FOREIGN KEY([instance_id])
+REFERENCES [bv].[l_dbv_transactions] ([instance_id])
+GO
+ALTER TABLE [bv].[l_dbv_transactions] CHECK CONSTRAINT [FK_l_dbv_transactions_l_dbv_transactions1]
+GO
+ALTER TABLE [bv].[l_fam_recipts]  WITH CHECK ADD  CONSTRAINT [FK_l_fam_recipts_l_fam_recipts] FOREIGN KEY([customer_id])
+REFERENCES [bv].[l_fam_recipts] ([customer_id])
+GO
+ALTER TABLE [bv].[l_fam_recipts] CHECK CONSTRAINT [FK_l_fam_recipts_l_fam_recipts]
+GO
+ALTER TABLE [bv].[s_bak_complaints]  WITH CHECK ADD  CONSTRAINT [FK_s_bak_complaints_s_bak_complaints] FOREIGN KEY([bak_c_id])
+REFERENCES [bv].[s_bak_complaints] ([bak_c_id])
+GO
+ALTER TABLE [bv].[s_bak_complaints] CHECK CONSTRAINT [FK_s_bak_complaints_s_bak_complaints]
+GO
+ALTER TABLE [bv].[s_bak_qulity_assurance]  WITH CHECK ADD  CONSTRAINT [FK_s_bak_qulity_assurance_s_bak_qulity_assurance] FOREIGN KEY([transaction_id])
+REFERENCES [bv].[s_bak_qulity_assurance] ([transaction_id])
+GO
+ALTER TABLE [bv].[s_bak_qulity_assurance] CHECK CONSTRAINT [FK_s_bak_qulity_assurance_s_bak_qulity_assurance]
+GO
+ALTER TABLE [bv].[s_dbv_satisfation]  WITH CHECK ADD  CONSTRAINT [FK_s_dbv_satisfation_s_dbv_satisfation] FOREIGN KEY([dbv_transaction_id])
+REFERENCES [bv].[s_dbv_satisfation] ([dbv_transaction_id])
+GO
+ALTER TABLE [bv].[s_dbv_satisfation] CHECK CONSTRAINT [FK_s_dbv_satisfation_s_dbv_satisfation]
+GO
+ALTER TABLE [bv].[s_dbv_satisfation]  WITH CHECK ADD  CONSTRAINT [FK_s_dbv_satisfation_s_dbv_satisfation1] FOREIGN KEY([dbv_transaction_id])
+REFERENCES [bv].[s_dbv_satisfation] ([dbv_transaction_id])
+GO
+ALTER TABLE [bv].[s_dbv_satisfation] CHECK CONSTRAINT [FK_s_dbv_satisfation_s_dbv_satisfation1]
+GO
+ALTER TABLE [bv].[s_dbv_satisfation]  WITH CHECK ADD  CONSTRAINT [FK_s_dbv_satisfation_s_dbv_satisfation2] FOREIGN KEY([dbv_transaction_id])
+REFERENCES [bv].[s_dbv_satisfation] ([dbv_transaction_id])
+GO
+ALTER TABLE [bv].[s_dbv_satisfation] CHECK CONSTRAINT [FK_s_dbv_satisfation_s_dbv_satisfation2]
+GO
+ALTER TABLE [bv].[s_fam_advertisement]  WITH CHECK ADD  CONSTRAINT [FK_s_fam_advertisement_s_fam_advertisement] FOREIGN KEY([cust_id])
+REFERENCES [bv].[s_fam_advertisement] ([cust_id])
+GO
+ALTER TABLE [bv].[s_fam_advertisement] CHECK CONSTRAINT [FK_s_fam_advertisement_s_fam_advertisement]
+GO
+ALTER TABLE [bv].[s_fam_qulity_assurance]  WITH CHECK ADD  CONSTRAINT [FK_s_fam_qulity_assurance_s_fam_qulity_assurance] FOREIGN KEY([fam_cust_id])
+REFERENCES [bv].[s_fam_qulity_assurance] ([fam_cust_id])
+GO
+ALTER TABLE [bv].[s_fam_qulity_assurance] CHECK CONSTRAINT [FK_s_fam_qulity_assurance_s_fam_qulity_assurance]
+GO
